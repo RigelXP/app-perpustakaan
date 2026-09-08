@@ -57,3 +57,23 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+# App Perpustakaan
+
+Aplikasi manajemen perpustakaan sederhana berbasis Laravel 12.
+
+## Tujuan
+Aplikasi ini dibuat untuk mengelola data buku, anggota, dan peminjaman perpustakaan.
+
+## Cara menjalankan project secara lokal
+1. Clone repository ini
+2. Jalankan `composer install`
+3. Copy `.env.example` menjadi `.env`, lalu jalankan `php artisan key:generate`
+4. Jalankan `php artisan serve`
+5. Buka `http://127.0.0.1:8000` di browser
+
+## Perbedaan Model, View, dan Controller
+- Model: Mengelola data, basis data, dan logika bisnis. Model bertanggung jawab untuk mengambil, menyimpan, memperbarui, atau menghapus data dari database (operasi CRUD). Komponen ini tidak tahu apa-apa tentang bagaimana data itu akan ditampilkan ke layar pengguna.
+- View: Menampilkan antarmuka visual atau tampilan ke pengguna. View adalah apa yang dilihat dan diklik oleh pengguna (seperti halaman HTML, tombol, teks, atau form). View hanya bertugas menyajikan data yang diberikan oleh Controller dan tidak boleh berisi logika pemrosesan data atau database.
+- Controller:  Menjadi jembatan atau penghubung antara Model dan View.  Controller menerima permintaan atau input dari pengguna lewat View, meminta data yang sesuai ke Model, lalu memutuskan View mana yang harus dikirim kembali ke pengguna.
+
