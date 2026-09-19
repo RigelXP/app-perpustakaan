@@ -1,29 +1,38 @@
-<!DOCTYPE html>
-<html>
-<head><title>Daftar Anggota</title></head>
-<body>
+@extends('layouts.app')
+
+@section('title', 'Daftar Anggota')
+
+@section('content')
     <h1>Daftar Anggota</h1>
 
-    @if (session('success'))
-        <div style="color: green;">{{ session('success') }}</div>
-    @endif
-
-    <a href="{{ route('members.create') }}">Tambah Anggota</a>
-
-    <table border="1" cellpadding="8">
-        <tr>
-            <th>Nama</th><th>NIM</th><th>Email</th><th>No. Telepon</th><th>Alamat</th><th>Status</th>
-        </tr>
-        @foreach ($members as $member)
-        <tr>
-            <td>{{ $member['nama'] }}</td>
-            <td>{{ $member['nim'] }}</td>
-            <td>{{ $member['email'] }}</td>
-            <td>{{ $member['nomor_telepon'] }}</td>
-            <td>{{ $member['alamat'] }}</td>
-            <td>{{ $member['status'] }}</td>
-        </tr>
-        @endforeach
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nama</th>
+                <th>NIM</th>
+                <th>Email</th>
+                <th>No. Telepon</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            @forelse ($members as $member)
+                <tr>
+                    <td>{{ $member['id'] }}</td>
+                    <td>{{ $member['nama'] }}</td>
+                    <td>{{ $member['nim'] }}</td>
+                    <td>{{ $member['email'] }}</td>
+                    <td>{{ $member['nomor_telepon'] }}</td>
+                    <td>{{ ucfirst($member['status']) }}</td>
+                </tr>
+            @empty
+                <tr>
+                    <td colspan="6">Belum ada data anggota.</td>
+                </tr>
+            @endforelse
+        </tbody>
     </table>
-</body>
-</html>
+
+    <p><em>Catatan: data di atas masih data dummy (array statis di Controller). Form tambah/edit anggota dan CRUD lengkap anggota baru dibuat mulai Pertemuan 5.</em></p>
+@endsection
