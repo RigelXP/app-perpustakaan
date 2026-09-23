@@ -4,7 +4,10 @@
 
 @section('content')
     <h1>Daftar Anggota</h1>
-
+    <form method="GET" action="{{ route('members.index') }}">
+    <input type="text" name="search" value="{{ request('search') }}" placeholder="Cari nama anggota...">
+    <button type="submit">Cari</button>
+    </form>
     <table>
         <thead>
             <tr>
@@ -33,6 +36,6 @@
             @endforelse
         </tbody>
     </table>
-
+    {{ $members->appends(request()->query())->links() }}
     <p><em>Catatan: data di atas masih data dummy (array statis di Controller). Form tambah/edit anggota dan CRUD lengkap anggota baru dibuat mulai Pertemuan 5.</em></p>
 @endsection
