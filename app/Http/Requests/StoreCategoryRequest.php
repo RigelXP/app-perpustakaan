@@ -7,6 +7,16 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class StoreCategoryRequest extends FormRequest
 {
+    public function store(StoreCategoryRequest $request)
+    {
+        $validated = $request->validated();
+
+        Category::create($validated);
+
+        return redirect()->route('categories.index')
+            ->with('success', "Kategori \"{$validated['nama_kategori']}\" berhasil ditambahkan.");
+    }
+
     public function authorize(): bool
     {
         return true;
